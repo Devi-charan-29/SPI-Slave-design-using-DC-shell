@@ -311,10 +311,18 @@ Here the path i2o will meet. After creating the virtual clock.
 2)	Here the group path i2r and r2o have met the slack after decreasing the input and output delays.
 
 
+![here1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/eb92d992-67a3-45ff-8e9a-e6262411d3b3)
 
 
- 
- 
+![Screenshot (190)](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/da0b29b6-d43f-42de-9ece-80eef9d55a71)
+
+
+
+
+![cd](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/ffe72ea6-12ab-4e76-b937-380afe177bab)
+
+
+
 ### Check Design.
 Check design checks the internal representation of the current design for issues and throws the error if any.
 Command 26 check_design
