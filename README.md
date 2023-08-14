@@ -89,118 +89,224 @@ Command 03 set link_library {* tcbn28hpcplusbwp40hvtssg072vm40c.db}
 
 
 
-WHAT HAPPENS IF WE WONT GIVE LINK LIBRARY? AND HOW MANY FILES WE CAN GIVE IN LINK LIBRARY:
+### WHAT HAPPENS IF WE WONT GIVE LINK LIBRARY? AND HOW MANY FILES WE CAN GIVE IN LINK LIBRARY:
 If we won’t provide the link library it will analyze and eloborate and throws the warning. After the compile stage we see many warnings one for the each cell. We can give files in link library for .db file ,macros in the link library.
-WHAT IS TARGET LIBRARY ? WHAT HAPPENS IF WE WONT GIVE:
+### WHAT IS TARGET LIBRARY ? WHAT HAPPENS IF WE WONT GIVE:
 Target library contains the standard cells information for the particular technology we are working on. We have to give the target library as we are specified for the technology of the design that we are working on.
 Command 04 set target_library { tcbn28hpcplusbwp40hvtssg072vm40c.db}
+
+![cmd 4](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/422117be-8a16-44c7-9e51-649e377b474c)
+
  
-ANALYZE:
+### ANALYZE:
 Analyze command loads the files and check the syntax errors line by line. And it throws the errors if, after checking is done at the end.
 Command 05 analyze –format verilog sspi.v
 
-ELABORATE:
+![cmd 5](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/37371945-05a0-4b2a-8869-ba0be4208f21)
+
+
+
+### ELABORATE:
 It converts the verilog code to GTECH(gates). Simply it builds the desing on specified parameters.
 Command 06 elaborate spi_slave
-READ VERILOG:
+
+
+### READ VERILOG:
 Read verilog do the task that which analyze and elaborate do. It also check line by line but it stops at line where error found and throws error, and will not proceed for the next line.
 Command 07  read_verilog sspi.v
 
 
 
-FLOW WITH SEARCH PATH AND WITHOUT SEARCH PATH:
-	WITH SEARCH PATH :
+### FLOW WITH SEARCH PATH AND WITHOUT SEARCH PATH:
+ ####	WITH SEARCH PATH :
 set search_path {/proj1/dataIn/libs/ /proj1/}
-set link_library {* tcbn28hpcplusbwp40hvtssg072vm40c.db} set target_library { tcbn28hpcplusbwp40hvtssg072vm40c.db} analyze –format verilog spi_slave.v
+set link_library {* tcbn28hpcplusbwp40hvtssg072vm40c.db} 
+set target_library { tcbn28hpcplusbwp40hvtssg072vm40c.db} 
+analyze –format verilog spi_slave.v
 elaborate counter
 
-	WITHOUT SEARCH PATH:
-set link_library {* /proj1/dataIn/libs/ tcbn28hpcplusbwp40hvtssg072vm40c.db} set target_library {/proj1/dataIn/libs/ tcbn28hpcplusbwp40hvtssg072vm40c.db} analyze –format verilog /proj1/spi_slave.v
+####	WITHOUT SEARCH PATH:
+set link_library {* /proj1/dataIn/libs/ tcbn28hpcplusbwp40hvtssg072vm40c.db}
+set target_library {/proj1/dataIn/libs/ tcbn28hpcplusbwp40hvtssg072vm40c.db}
+analyze –format verilog /proj1/spi_slave.v
 elaborate counter
  
-START GUI:
+### START GUI:
 By this command we can see the block leve schematic circuit of netlist after the elaborate.
 Command 08 start gui
+![cmd 8](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/40b184a9-2811-4099-83c2-cafaa84ff860)
 
- 
-STOP GUI :
+![cmd 8 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/036cec38-859e-440a-a8d2-cf34360b718e)
+
+
+
+### STOP GUI :
 It is used to close the window of the block level schematic circuit of netlist.
 Command 09 stop gui
-COMPILE:
+### COMPILE:
 By this command the various obtimisation is done. For meeting the power, performance , area.
 Command 10 compile
 
- 
- 
- 
-START GUI:
+![cmd 10](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/dfbf3652-d9ca-4006-8acb-e743a86e9043)
+
+
+![cmd 10 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/1057df5c-bf00-4a66-b571-874e0f897444)
+
+
+![Screenshot (186)](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/6e29670b-f258-4198-ad4a-f39907333040)
+
+
+![Screenshot (187)](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/4526eaf2-3586-437d-8e9d-4cf1b65396eb)
+
+
+
+### START GUI:
 After the compile by using this command we can see the gate level schematic circuit of netlist.
 Command 11 start gui
 
- 
-STOP GUI:
+
+![cmd 11](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/b019a3b6-d3d0-4484-910a-a49945271773)
+
+
+
+![cmd 11 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/c93f11cf-d19f-4d16-88e5-bbaa1acfd328)
+
+
+
+### STOP GUI:
 It closes the gate level schematic circuit of netlist window.
 Command 12 stop gui
  
-TCL SCRIPT FOR CLOCK PORT:
+### TCL SCRIPT FOR CLOCK PORT:
 This the script to know the clock port name. It is used while creating the clock.
-Script:
+#### Script:
 foreach a [get_object_name [all_registers –clock_pins]]{
 set b [get_object_name [all_fanin –to $a –flat –startpoints_only]] if {[llength $b] == 1 }{
-foreach c [get_object_name [get_ports [all_inputs]]] { if {$c == $b} {
+foreach c [get_object_name [get_ports [all_inputs]]] 
+{ if {$c == $b} {
 lappend d $b
 }}}}
 puts[ lsort –u $d]
-CHECK TIMING:
+
+
+
+![scpt](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/b7e1fd3f-ae26-43ea-b5d7-0be690d05b30)
+
+
+### CHECK TIMING:
 Here the clock is checked wether it is created or not. If it is not there we will see the error , so we should create the clock based on the requirement.
 Command 13 check_timing
-CREATE CLOCK:
+
+
+![xmd 13](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/9a90543e-999c-4ad6-a819-2f4f6969df87)
+
+
+
+
+### CREATE CLOCK:
 By creating the clock , so the tool will understand the clock period and the frequency. Based on the clock only everything is checked.
 Command 14 create_clock –name clk –period 5 [get_ports SCK]
-INPUT AND OUTPUT DELAYS:
+
+
+![cmd 14](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/f0a38a43-226d-4dce-adef-fc81b8400093)
+
+
+
+### INPUT AND OUTPUT DELAYS:
 We don’t know the excat time that we receive data from another block output to our block input , so in the worst case we take 60% of the clock period for input and same 60% of clock period for output in worst case. For data from our block ouput to next block input.
 Command 15 set_input_delay 1.2 –clock clk [get_ports [remove_from_collection [all_inputs] SCK]]
 Command 16	set_input_delay 1.2 –clock clk [get_ports [all_outputs ]]
- 
-DRIVING CELL AND LOAD INFORMATION:
+
+
+![cmd 16](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/9172c3fb-8c36-4114-bd88-13544ddd73ad)
+
+
+
+### DRIVING CELL AND LOAD INFORMATION:
 •	We will set the driving cell to all the input ports except clock port.Driving cell maintains the signal strength from other block output to our block input.Were the input is driven from the driving cell.
 •	Load keeps the signal strength strong from our block output to next block input.We provide the output (Load) through this cell to another Block.
 Command 17 set_driving_cell -lib_cell BUFFD4BWP40P140HVT [get_ports [remove_from_collection [all_outputs] SCK]]
 Command 18 set_load 0.00146193 [get_ports [all_outputs]]
-CLOCK UNCERTAINITIES:
+
+
+![cmd 18](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/4081d064-f03a-4740-93ef-a179007ba7ab)
+
+
+
+### CLOCK UNCERTAINITIES:
 Clock uncertainity we take 20% of clock period for setup in the worst case and 15% of clock period for hold in worst case.
 Command 19 set_clock_uncertainty -setup 1 [get_clocks SCK]
 Command 20 set_clock_uncertainty -hold 0.75 [get_clocks SCK]
-CREATING GROUP PATHS:
+
+
+
+![cmd 20](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/2a12bdb8-79ce-43dd-94f6-653ed2ffc330)
+
+
+
+### CREATING GROUP PATHS:
 Here the group paths will be created , so that we can check the timing report of each group for the meeting of the slack
 Command 21   group_path -name i2r -from [all_inputs] -to [all_registers -data_pins]
 Command 22   group_path -name r2r -from [all_registers -clock_pins] -to [all_registers -data_pins]
 Command 23	group_path -name r2o -from [all_registers -clock_pins] -to [all_outputs]
 Command 24   group_path -name i2o -from [all_inputs] -to [all_outputs]
 
-REPORT TIMING:
+
+![cmd 24](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/72ac4500-5c7f-4b62-a799-537bc03c75a2)
+
+
+
+### REPORT TIMING:
 Based on the group paths generated we will can see the timing report of the groups . for meeting the slack.
 Command 25   report_timing
 
- 
- 
- 
 
- 
+![cmd 25](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/5830b73d-3eb4-4357-88dd-de6430982481)
 
- 
- 
-CREATING VIRTUAL CLOCK :
+
+![cmd 25 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/91eb22e2-476d-4d81-9bdb-a752ac3ed471)
+
+
+
+![cmd 25 2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/228b36b1-a65b-4536-8a83-d36ea94617f5)
+
+
+
+![cmd 25 3](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/e3fa2f6b-407e-42f6-b942-2a283e8a9ef3)
+
+
+![cmd 25 4](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/72d11764-dd1a-4271-b859-5956b2a2505c)
+
+
+
+![cmd 25 5](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/3d279a3d-a6b3-40c2-a2ed-275ff246ade8)
+
+
+
+### CREATING VIRTUAL CLOCK :
 Virtual clock is created to meet the i2o group path. The virtual clock is given for the path i2o because the data from the previous block was with the reference with the clock so the i2o has only combinational block so its has no clock so we are checking with the reference of clock of the i2o slack. So we have to create the virtual clock for the i2o path.
 
- 
 
- 
-REPORT TIMING (after the virtual clock):
+![26 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/45402168-e325-4cc2-9834-cf2e55ae33a2)
+
+
+![26 2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/68a4407b-0a6d-4f36-ae49-8f7376955f85)
+
+
+![26 3](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/42cd0a03-9e74-482d-aac1-69251be90b93)
+
+
+
+ ### REPORT TIMING (after the virtual clock):
 Here the path i2o will meet. After creating the virtual clock.
 
-	Here we do again give set input and output delays by decreasing the delay time period to meet the slack for the path of i2r and r2o. generally project guid has the information of these delay information particularally.
-	Here the group path i2r and r2o have met the slack after decreasing the input and output delays.
+![27 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/f585f898-56e4-4a14-bb86-81c4d5ced522)
+
+1)	Here we do again give set input and output delays by decreasing the delay time period to meet the slack for the path of i2r and r2o. generally project guid has the information of these delay information particularally.
+2)	Here the group path i2r and r2o have met the slack after decreasing the input and output delays.
+
+
+
 
  
  
