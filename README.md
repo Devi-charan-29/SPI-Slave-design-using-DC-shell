@@ -310,48 +310,95 @@ Here the path i2o will meet. After creating the virtual clock.
 
  
  
-Check Design.
+### Check Design.
 Check design checks the internal representation of the current design for issues and throws the error if any.
 Command 26 check_design
 
 
-REPORT QOR:
+![cmd 26](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/d25ddf12-d527-459f-bb62-5b95db4df8fd)
+
+
+
+### REPORT QOR:
 This command reports the timing path group ,cell count details , current design statitics such as combinational, noncombinational, and total area and etc.
 Command 27 report_qor
 
- 
- 
- 
+
+![cmd 27 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/18351e53-aee6-4c2c-82d0-f9290ca3fc27)
+
+
+
+![cmd 27 2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/09409935-7e7f-40dc-acfe-4ae918e7c4a5)
+
+
+
+![cmd 27 3](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/8b9f20a9-760b-4f6e-b4ee-8b8816bcecc4)
+
+
+
+![cmd 27 4](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/c17fbb69-2f3b-4532-a2f6-b9216c58ad20)
 
  
-REPORT POWER:
+ 
+ 
+### REPORT POWER:
 This command calculates the power and gives the reports of the design.
 Command 28 report_power
 
- 
+ ![rp1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/53049ede-cd40-4c9e-8880-3e326de010f4)
 
  
+![rp2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/c52978b8-c355-404c-b5d1-7b5bc304c6f9)
+
+
+![rp3](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/855a215a-4393-485d-a9f5-e67b834a0e76)
+
+
  
-REPORT AREA:
+### REPORT AREA:
 This command calculates the area and gives the reports of the design.
 Command 29 report_area
+
+![ra](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/80db5848-3bc2-4f9a-b108-544f727b4987)
+
+
+![ra 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/c761412c-3395-44d5-98d4-3df1d0f1757a)
 
 
 Command	30	write_file -format verilog -hierarchy -output sppi.v
 (it save the netlis in verilog , by extending the file name by .v )
 
+![ra 2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/e7651d99-8ee4-4959-8a93-7cd9db1ecf5b)
+
+
 Command 31 write_sdc sppi.sdc
 (All SDC commands saved in the file with the extention the file name by .sdc)
 
-DDC FILE:
+![ra 3](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/f6c16cc9-d8a1-4b5d-b5ed-dd6948d95c34)
+
+
+
+### DDC FILE:
 In the .ddc file the whole design of sdc and netlist overall will be saved . where the ddc file will be readable by the toll.
 Command 32 write_file -format ddc -hierarchy –output sppi.ddc
 
+![DDC 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/ca7ab967-6afd-4286-b885-5f425a241474)
+
+
 After creating the ddc file we can execute or run the project by call the ddc file , after the seting the search path ,link libray and target library. By entering this command.
 Command 32 read_ddc sppi.ddc
+
+![DDC 2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/7f241fd6-74ed-475c-9bb6-e53c23972f9d)
+
  
 HISTORY:
 History command is used to see the history of commands that you have entered.
+
+
+![His 1](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/c85f13a2-7efa-4445-b1d2-265f4e84327d)
+
+
+![His 2](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/b86015ef-e86d-4c32-89ef-7b1f95d6523a)
 
  
  
