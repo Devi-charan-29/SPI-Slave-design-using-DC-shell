@@ -1,26 +1,33 @@
 # SPI-Slave-design-using-DC-shell
 
-WHAT IS VLSI?
- 
 
+### WHAT IS VLSI?
  
 Vlsi stands for “very large scal integration” . it is the the proces of creating the integrated circuit by combining of 1000’s of transistors on a single chip.
 Moore's law is the observation that the number of transistors in an integrated circuit (IC) doubles about every two years.
+
+![flow](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/2d61074f-8b67-4416-b8ca-a3ebcd2ef631)
+
 Fig:1 – vlsi flow and physical design flow
 
-WHAT IS SYNTHESIS:
+
+### WHAT IS SYNTHESIS:
 Synthesis is the process where the technology independent RTL code that is converted into technology dependent gate level netlist , where meeting the time,area and power.
 
+
+![synthesis](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/7e03d979-0227-400a-8033-20c7879aa0d3)
+
 Fig:2 –synthesis flow
-TYPES OF SYNTHESIS:
+
+### TYPES OF SYNTHESIS:
 •	Logical aware synthesis
 •	Physical aware synthesis
  
-LOGICAL AWARE SYNTHESIS:
+ ### LOGICAL AWARE SYNTHESIS:
 It converts the RTL code into optimized gate level netlist Logically.
 Logical Synthesis Optimizes the Logic, timing and functionality implementation using logic gates and DRV.
 INPUTS:
-	Rtl code
+	1) Rtl code
 	Sdc
 	Library file
 OUTPUTS:
