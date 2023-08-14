@@ -110,6 +110,11 @@ Command 05 analyze –format verilog sspi.v
 It converts the verilog code to GTECH(gates). Simply it builds the desing on specified parameters.
 Command 06 elaborate spi_slave
 
+![Screenshot (189)](https://github.com/Devi-charan-29/SPI-Slave-design-using-DC-shell/assets/95524221/46ab69d1-07c9-4a58-8826-5330448f438c)
+
+
+
+
 
 ### READ VERILOG:
 Read verilog do the task that which analyze and elaborate do. It also check line by line but it stops at line where error found and throws error, and will not proceed for the next line.
